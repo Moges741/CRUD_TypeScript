@@ -49,15 +49,15 @@ const updateUser = (req: Request, res: Response) => {
     }
 }
 // delete user
-// const deleteUser = (req: Request, res: Response) => {
-//     const id = req.params.id;
-//     const userIndex = users.findIndex(u => u.userId === Number(id));
-//     if(userIndex !== -1){
-//         const deletedUser = users.splice(userIndex, 1);
-//         res.status(200).json(deletedUser[0]);
-//     }else{
-//         res.status(404).json({message: "User not found"});
-//     }
-// }
+const deleteUser = (req: Request, res: Response) => {
+    const id = req.params.id;
+    const index = users.findIndex(u => u.userId === Number(id));
+    if(index !== -1){
+        const deletedUser = users.splice(index, 1);
+        res.status(200).json(deletedUser[0]);
+    }else{
+        res.status(404).json({message: "User not found"});
+    }
+}
 
-export {getUsers, getUserById, createUser, updateUser};
+export {getUsers, getUserById, createUser, updateUser, deleteUser};
