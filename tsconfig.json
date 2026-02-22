@@ -4,12 +4,14 @@
     // File Layout
     "rootDir": "./src",
     "outDir": "./dist",
+    // "types": "module",
+    // "module": "CommonJS"
 
     // Environment Settings
     // See also https://aka.ms/tsconfig/module
-    "module": "nodenext",
+    "module": "NodeNext",
     "target": "esnext",
-    "types": ["node"],
+    // "types": ["node"],
        "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     // For nodejs:
@@ -37,7 +39,7 @@
     // Recommended Options
     "strict": true,
     "jsx": "react-jsx",
-    "verbatimModuleSyntax": true,
+    "verbatimModuleSyntax": false,
     "isolatedModules": true,
     "noUncheckedSideEffectImports": true,
     "moduleDetection": "force",
