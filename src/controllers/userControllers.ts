@@ -20,7 +20,7 @@ const getUserById = (req: Request, res: Response) => {
 const createUser = (req: Request, res: Response) => {
     const {name, age, dept, phone} = req.body;
     const newUser = {
-        id: ++userId,
+        userId: ++userId,
         name,
         age,
         dept,
@@ -31,24 +31,23 @@ const createUser = (req: Request, res: Response) => {
 
 }
 // update user
-// const updateUser = (req: Request, res: Response) => {
-//     const id = req.params.id;
-//     const {name, age, dept, isStudent, phone} = req.body;
-//     const userIndex = users.findIndex(u => u.userId === Number(id));
-//     if(userIndex !== -1){
-//         users[userIndex] = {
-//             userId: Number(id),
-//             name,
-//             age,
-//             dept,
-//             isStudent,
-//             phone
-//         }
-//         res.status(200).json(users[userIndex]);
-//     }else{
-//         res.status(404).json({message: "User not found"});
-//     }
-// }
+const updateUser = (req: Request, res: Response) => {
+    const id = req.params.id;
+    const {name, age, dept, phone} = req.body;
+    const index = users.findIndex(u => u.userId === Number(id));
+    if(index !== -1){
+        users[index] = {
+            userId: Number(id),
+            name,
+            age,
+            dept,
+            phone
+        }
+    res.status(200).json(users[index]);
+    }else{
+        res.status(404).json({message : "user not found"})
+    }
+}
 // delete user
 // const deleteUser = (req: Request, res: Response) => {
 //     const id = req.params.id;
@@ -61,4 +60,4 @@ const createUser = (req: Request, res: Response) => {
 //     }
 // }
 
-export {getUsers, getUserById};
+export {getUsers, getUserById, createUser, updateUser};
